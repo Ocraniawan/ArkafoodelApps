@@ -1,0 +1,827 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20200116.221517.3180.0.001.json",
+    "dumpEventTime": "2020-01-16T22:15:17Z",
+    "dumpEventTimeStamp": "1579184117739",
+    "processId": 3180,
+    "cwd": "C:\\Users\\BlackHat\\Documents\\project\\ArkafoodelApps",
+    "commandLine": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\BlackHat\\Documents\\project\\ArkafoodelApps\\node_modules\\jest-worker\\build\\workers\\processChild.js"
+    ],
+    "nodejsVersion": "v12.14.0",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.14.0",
+      "v8": "7.7.299.13-node.16",
+      "uv": "1.33.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.39.2",
+      "napi": "5",
+      "llhttp": "1.1.4",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.14.0/node-v12.14.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.14.0/node-v12.14.0.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.14.0/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "6.1.7601",
+    "osVersion": "Windows 7 Ultimate Service Pack 1",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Pentium(R) CPU  N3540  @ 2.16GHz",
+        "speed": 2166,
+        "user": 2997122,
+        "nice": 0,
+        "sys": 1631364,
+        "idle": 20316821,
+        "irq": 160447
+      },
+      {
+        "model": "Intel(R) Pentium(R) CPU  N3540  @ 2.16GHz",
+        "speed": 2166,
+        "user": 2471461,
+        "nice": 0,
+        "sys": 885929,
+        "idle": 21586731,
+        "irq": 7410
+      },
+      {
+        "model": "Intel(R) Pentium(R) CPU  N3540  @ 2.16GHz",
+        "speed": 2166,
+        "user": 3328920,
+        "nice": 0,
+        "sys": 1115141,
+        "idle": 20499935,
+        "irq": 8049
+      },
+      {
+        "model": "Intel(R) Pentium(R) CPU  N3540  @ 2.16GHz",
+        "speed": 2166,
+        "user": 2554235,
+        "nice": 0,
+        "sys": 1074550,
+        "idle": 21315087,
+        "irq": 8720
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "Wireless Network Connection",
+        "internal": false,
+        "mac": "dc:85:de:be:82:62",
+        "address": "fe80::3cf3:91f5:947f:6425",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 12
+      },
+      {
+        "name": "Wireless Network Connection",
+        "internal": false,
+        "mac": "dc:85:de:be:82:62",
+        "address": "192.168.0.119",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "VirtualBox Host-Only Network",
+        "internal": false,
+        "mac": "0a:00:27:00:00:0f",
+        "address": "fe80::7078:95e4:d091:734a",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 15
+      },
+      {
+        "name": "VirtualBox Host-Only Network",
+        "internal": false,
+        "mac": "0a:00:27:00:00:0f",
+        "address": "192.168.10.1",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "VirtualBox Host-Only Network #2",
+        "internal": false,
+        "mac": "0a:00:27:00:00:13",
+        "address": "fe80::3057:fc76:411e:844f",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 19
+      },
+      {
+        "name": "VirtualBox Host-Only Network #2",
+        "internal": false,
+        "mac": "0a:00:27:00:00:13",
+        "address": "192.168.52.2",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "Teredo Tunneling Pseudo-Interface",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "2001:0:2456:3fb6:2849:1a5b:3f57:ff88",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Teredo Tunneling Pseudo-Interface",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::2849:1a5b:3f57:ff88",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 13
+      }
+    ],
+    "host": "BlackHat-PC"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x000000013f181729",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f185b4c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f184b08",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f27369b",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fa782de",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fa60321",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f92dbec",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f935cf1",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f92b353",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f929b24",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f9519b3",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f778cda",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f641cef",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f67b2af",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fea404d",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fee176f",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe1cf8c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe23bdc",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe21191",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fe20d7c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f9862d3",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f985c56",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013fa56ecb",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f2ed0ed",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f2ed3b1",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f2e68f3",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f1ef2a0",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f1efa9c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f1eaca5",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f30cbf2",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f30cc67",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f30fa7f",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f319b2c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f319e54",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f23bc12",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f299a73",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013f15667c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000013ff57138",
+      "symbol": ""
+    },
+    {
+      "pc": "0x0000000076c7652d",
+      "symbol": ""
+    },
+    {
+      "pc": "0x0000000076eac521",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 4395008,
+    "totalCommittedMemory": 4395008,
+    "usedMemory": 3438944,
+    "availableMemory": 1036100520,
+    "memoryLimit": 1039138816,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 261872,
+        "used": 32296,
+        "available": 229576
+      },
+      "new_space": {
+        "memorySize": 1048576,
+        "committedMemory": 1048576,
+        "capacity": 1047488,
+        "used": 1047472,
+        "available": 16
+      },
+      "old_space": {
+        "memorySize": 1945600,
+        "committedMemory": 1945600,
+        "capacity": 1822192,
+        "used": 1782912,
+        "available": 39280
+      },
+      "code_space": {
+        "memorySize": 425984,
+        "committedMemory": 425984,
+        "capacity": 166240,
+        "used": 162464,
+        "available": 3776
+      },
+      "map_space": {
+        "memorySize": 528384,
+        "committedMemory": 528384,
+        "capacity": 315616,
+        "used": 279040,
+        "available": 36576
+      },
+      "large_object_space": {
+        "memorySize": 135168,
+        "committedMemory": 135168,
+        "capacity": 131112,
+        "used": 131112,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 49152,
+        "committedMemory": 49152,
+        "capacity": 3648,
+        "used": 3648,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1047488,
+        "used": 0,
+        "available": 1047488
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 0.374,
+    "kernelCpuSeconds": 0.14,
+    "cpuConsumptionPercent": 0.26359,
+    "maxRss": 19144704,
+    "pageFaults": {
+      "IORequired": 10611,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 75,
+      "writes": 99
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "ANDROID_HOME": "C:\\Users\\BlackHat\\AppData\\Local\\Android\\Sdk",
+    "APPDATA": "C:\\Users\\BlackHat\\AppData\\Roaming",
+    "CommonProgramFiles": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "BLACKHAT-PC",
+    "ComSpec": "C:\\Windows\\system32\\cmd.exe",
+    "dp0": "C:\\Users\\BlackHat\\AppData\\Roaming\\npm\\",
+    "FORCE_COLOR": "1",
+    "FP_NO_HOST_CHECK": "NO",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\BlackHat",
+    "JAVA_HOME": "C:\\Program Files\\Java\\jdk1.8.0_231",
+    "LOCALAPPDATA": "C:\\Users\\BlackHat\\AppData\\Local",
+    "LOGONSERVER": "\\\\BLACKHAT-PC",
+    "NUMBER_OF_PROCESSORS": "4",
+    "OS": "Windows_NT",
+    "Path": "C:\\Users\\BlackHat\\Documents\\project\\ArkafoodelApps\\node_modules\\react-native\\scripts\\node_modules\\.bin;C:\\Users\\BlackHat\\Documents\\project\\ArkafoodelApps\\node_modules\\react-native\\node_modules\\.bin;C:\\Users\\BlackHat\\Documents\\project\\ArkafoodelApps\\node_modules\\node_modules\\.bin;C:\\Users\\BlackHat\\Documents\\project\\ArkafoodelApps\\node_modules\\.bin;C:\\Users\\BlackHat\\Documents\\project\\node_modules\\.bin;C:\\Users\\BlackHat\\Documents\\node_modules\\.bin;C:\\Users\\BlackHat\\node_modules\\.bin;C:\\Users\\node_modules\\.bin;C:\\node_modules\\.bin;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Users\\BlackHat\\AppData\\Local\\Android\\Sdk\\platform-tools;C:\\Users\\BlackHat\\AppData\\Local\\Android\\Sdk\\tools;C:\\Users\\BlackHat\\AppData\\Local\\Android\\Sdk\\tools\\bin;C:\\Program Files\\Java\\jdk1.8.0_231\\bin;C;C:\\Users\\BlackHat\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\BlackHat\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\BlackHat\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\BlackHat\\AppData\\Roaming\\npm;C:\\Program Files\\Java\\jdk1.8.0_231\\bin;C:\\Users\\BlackHat\\AppData\\Local\\Android\\Sdk\\platform-tools;C:\\Users\\BlackHat\\AppData\\Local\\Android\\Sdk\\tools;C:\\Users\\BlackHat\\AppData\\Local\\Android\\Sdk\\tools\\bin;",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 55 Stepping 8, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "3708",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PROMPT": "$P$G",
+    "PSModulePath": "C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\",
+    "PUBLIC": "C:\\Users\\Public",
+    "RCT_METRO_PORT": "8081",
+    "SESSIONNAME": "Console",
+    "SystemDrive": "C:",
+    "SystemRoot": "C:\\Windows",
+    "TEMP": "C:\\Users\\BlackHat\\AppData\\Local\\Temp",
+    "TMP": "C:\\Users\\BlackHat\\AppData\\Local\\Temp",
+    "USERDOMAIN": "BlackHat-PC",
+    "USERNAME": "BlackHat",
+    "USERPROFILE": "C:\\Users\\BlackHat",
+    "VBOX_MSI_INSTALL_PATH": "C:\\Program Files\\Oracle\\VirtualBox\\",
+    "windir": "C:\\Windows",
+    "windows_tracing_flags": "3",
+    "windows_tracing_logfile": "C:\\BVTBin\\Tests\\installpackage\\csilogfile.log",
+    "_prog": "node"
+  },
+  "sharedObjects": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Windows\\SYSTEM32\\ntdll.dll",
+    "C:\\Windows\\system32\\kernel32.dll",
+    "C:\\Windows\\system32\\KERNELBASE.dll",
+    "C:\\Windows\\system32\\dbghelp.dll",
+    "C:\\Windows\\system32\\msvcrt.dll",
+    "C:\\Windows\\system32\\WS2_32.dll",
+    "C:\\Windows\\system32\\RPCRT4.dll",
+    "C:\\Windows\\system32\\NSI.dll",
+    "C:\\Windows\\system32\\ADVAPI32.dll",
+    "C:\\Windows\\SYSTEM32\\sechost.dll",
+    "C:\\Windows\\system32\\USER32.dll",
+    "C:\\Windows\\system32\\GDI32.dll",
+    "C:\\Windows\\system32\\LPK.dll",
+    "C:\\Windows\\system32\\USP10.dll",
+    "C:\\Windows\\system32\\IPHLPAPI.DLL",
+    "C:\\Windows\\system32\\WINNSI.DLL",
+    "C:\\Windows\\system32\\PSAPI.DLL",
+    "C:\\Windows\\system32\\USERENV.dll",
+    "C:\\Windows\\system32\\profapi.dll",
+    "C:\\Windows\\system32\\CRYPT32.dll",
+    "C:\\Windows\\system32\\MSASN1.dll",
+    "C:\\Windows\\system32\\bcrypt.dll",
+    "C:\\Windows\\system32\\WINMM.dll",
+    "C:\\Windows\\system32\\IMM32.DLL",
+    "C:\\Windows\\system32\\MSCTF.dll",
+    "C:\\Windows\\system32\\powrprof.dll",
+    "C:\\Windows\\system32\\SETUPAPI.dll",
+    "C:\\Windows\\system32\\CFGMGR32.dll",
+    "C:\\Windows\\system32\\OLEAUT32.dll",
+    "C:\\Windows\\system32\\ole32.dll",
+    "C:\\Windows\\system32\\DEVOBJ.dll",
+    "C:\\Windows\\system32\\uxtheme.dll",
+    "C:\\Windows\\system32\\mswsock.dll",
+    "C:\\Windows\\System32\\wshtcpip.dll",
+    "C:\\Windows\\System32\\wship6.dll",
+    "C:\\Windows\\system32\\bcryptprimitives.dll",
+    "C:\\Windows\\system32\\dhcpcsvc.DLL",
+    "C:\\Windows\\system32\\dhcpcsvc6.DLL",
+    "C:\\Windows\\system32\\NLAapi.dll",
+    "C:\\Windows\\system32\\napinsp.dll",
+    "C:\\Windows\\system32\\pnrpnsp.dll",
+    "C:\\Windows\\system32\\DNSAPI.dll",
+    "C:\\Windows\\System32\\winrnr.dll"
+  ]
+}
