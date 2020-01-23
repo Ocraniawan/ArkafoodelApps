@@ -17,11 +17,12 @@ import Search from '../screens/Search'
 import Checkout from '../screens/Checkout'
 import Profile from '../screens/Profile'
 import Rating from '../screens/Rating'
-import Restaurant from '../screens/Restaurant'  
+// import Restaurant from '../screens/Restaurant'  
 import Landing from '../screens/LandingPage'
 import Login from '../screens/Login'
 import Register from '../screens/Register' 
-
+import Restaurants from '../screens/Restaurant'
+import CategoriesById from '../screens/CategoriesById'
 
 const HomeNav = createStackNavigator({
     Home:{
@@ -40,12 +41,12 @@ const HomeNav = createStackNavigator({
         screen: Items,
         navigationOptions: {
         },
+    },
     Restaurant:{
-        screen: Restaurant,
+        screen: Restaurants,
         navigationOptions: {
             headerShown: false,
         }
-    }
     }
 }, { initialRouteName: 'Home' })
 
@@ -72,8 +73,8 @@ const CategoryNav = createStackNavigator({
             headerShown: false,
         },
     },
-    Detail: {
-        screen: DetailItem,
+    CategoriesId: {
+        screen: DetailCategories,
         navigationOptions: {
             headerShown: false,
         },
@@ -205,12 +206,6 @@ const LandingNav = createSwitchNavigator({
         navigationOptions:{
             headerShown: false,
             tabBarVisible: false, 
-        }
-    },
-    Home:{
-        screen: Mainscreen,
-        navigationOptions: {
-            headerShown: false,
         }
     },
 },{

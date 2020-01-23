@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
+
 import { Text, View, StyleSheet, Image, ScrollView, Touchable, TouchableOpacity} from 'react-native'
 import {Header,Item, ListItem, Separator, Input, Card, Container, Footer, FooterTab,Icon, Button, CardItem, Left, Thumbnail, Body, Right, } from 'native-base'
 import Icons from 'react-native-vector-icons/FontAwesome'
-import Sicons from 'react-native-vector-icons/SimpleLineIcons'
+import Ratings from 'react-native-star-rating'
+
+import {connect} from 'react-redux'
+import {getDetailItem} from '../redux/action/menu'
+import {APP_URL} from '../resources/config'
+import {getCommentById } from '../redux/action/review'
 
 const styles = StyleSheet.create({
   root:{
@@ -66,8 +72,9 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 10,
     borderRadius: 10,
-    elevation: 3,
+    elevation: 2,
     height: 200,
+    width: 150,
   },
   textBody:{
     fontSize: 14,
@@ -90,8 +97,9 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
-    height: 140,
-    width: 150,
+    height: 150,
+    width: 148,
+    alignSelf: "center"
   },
   sIcon:{
     fontSize: 20,
@@ -107,15 +115,12 @@ const styles = StyleSheet.create({
     cardCategories:{
       marginLeft: 10,
       marginBottom: 10,
-      // borderRadius: 5,
-      // elevation: 1,
       justifyContent: 'center'
 
     },
     imageCategories:{
       marginTop: 5,
       marginLeft: 5,
-      // marginRight: 5,
       marginBottom: 2,
       width: 65,
       height: 65,
@@ -186,7 +191,7 @@ const styles = StyleSheet.create({
     },
     comment:{
     marginTop: 10,
-    color: '#C7C7C7',
+    color: 'black',
     },
     review:{
       flex: 1,
@@ -201,7 +206,33 @@ const styles = StyleSheet.create({
 
 
 
-export default class DetailItem extends Component {
+class DetailItem extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+        // data: {},
+        // isFetched: false
+    }
+}
+
+async componentDidMount(){
+  const {id} = this.props.navigation.state.params
+  await this.props.dispatch(getDetailItem(id))
+  await this.props.dispatch(getCommentById(id))
+
+// const url = APP_URL.concat(`item/${id}`)
+// const item = await Axios.get(url)
+// const {suggess, data} = item
+
+// const review = APP_URL.concat(`valuation/${id}`)
+// const reviews = await Axios.get(review)
+// const reviewItem = reviews.data
+
+// this.setState({data, reviewItem, isFetchedDetailItem:true, paramsId_Item:id})
+}
+
+
+
   render() {
     return (
       <>
@@ -217,41 +248,57 @@ export default class DetailItem extends Component {
         <ScrollView vertical>
         {/* <ListItem/> */}
         <View style={styles.row}>
-            <View style={styles.cardItem}>
-              <Image style={styles.imageDetail} source={require('../../Images/DummyItem.jpg')}/>
-              <Text style={styles.foodName}>Food Name</Text>
-              <Text style={styles.restaurantName}>Arkademy Coffe Shop</Text>
+        {!this.props.items.isLoading && this.props.items.data.map(v=>(
+
+            <View key= {v.id_item} style={styles.cardItem}>
+              <Image style={styles.imageDetail} source={{uri: APP_URL.concat(`src/images/${v.image}`)}}/>
+              <Text style={styles.foodName}>{v.item_name}</Text>
+              <Text style={styles.restaurantName}>{v.restaurant_name}</Text>
               <Item style={styles.itemText} noBorder>
-              <Text style={styles.Rating}>4.5 <Icons name= "star"color="orange"  style={styles.star}/></Text>
-              <Text style={styles.price}>Rp 10.000</Text>
+              <View style = { styles.Rating }>
+                              <Ratings
+                                  fullStarColor = { 'orange' }
+                                  starSize = { 18 }
+                                  disabled = { true }
+                                  maxStars = { 5 }
+                                  rating = { v.rating } 
+                              />
+                            </View>
+              <Text style={styles.price}>Rp. {v.price}</Text>
               </Item>
-              {/* <View style={styles.counter}>
-              <Counter start={1} minusIcon={minusIcon} plusIcon={plusIcon} touchableColor='green'/>
-            </View> */}
               <TouchableOpacity style={styles.addCart}>
                 <Icons name='cart-plus' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
                 <Text style={{color:'white', fontSize:14, fontWeight:'bold'}}>ADD TO CART</Text>
               </TouchableOpacity>
             <View style={{borderTopWidth:1, borderColor:'#B5B5B5'}}>
             <Text style={{fontWeight:'bold', fontSize:14, marginLeft:10, marginTop: 10,}}>Description : </Text>
-            <Text style={styles.detail}>This Item made From Bla-bla bla-bla</Text>
+            <Text style={styles.detail}>{v.description}</Text>
             </View>
             </View>
+        ))}
         </View>
+      
 
         {/* Review */}
         <View style={styles.reviewRating}>
             <Text style={styles.customer}>Customer Reviews</Text>
+            {!this.props.comment.isLoading && this.props.comment.data.data.map((v, i) => { 
+              return (
           <View style={styles.review}>
-            <Text style={styles.Rating}>5 <Icons name= "star"color="orange"  style={styles.star}/></Text>
-            <Text style={styles.by}>By Nova Iriani</Text>
-            <Text style={styles.comment}>So far ini paling enak, pahit sama manisnya pas, untuk harga segini terbilang murah dengan rasa yang sangat expensive.</Text>
+          <View style = { styles.Rating }>
+                              <Ratings
+                                  fullStarColor = { 'orange' }
+                                  starSize = { 18 }
+                                  disabled = { true }
+                                  maxStars = { 5 }
+                                  rating = { v.rating } 
+                              />
+                            </View>
+            <Text style={styles.by}>By {v.username}</Text>
+            <Text style={styles.comment}>{v.review}</Text>
           </View>
-          <View style={styles.review}>
-            <Text style={styles.Rating}>4.5 <Icons name= "star"color="orange"  style={styles.star}/></Text>
-            <Text style={styles.by}>By Ocraniawan</Text>
-            <Text style={styles.comment}>Parah sihh ini... Kopinya enak bangat, habis minum mata langsung segar, Kwalitas sesuai harga lah..!! Next time order lagi.</Text>
-          </View>
+            )
+          })} 
         </View>
         
 
@@ -264,59 +311,29 @@ export default class DetailItem extends Component {
         </ListItem>
           <ScrollView horizontal>
           <View style={styles.row}>
+          {/* this.props.items.isLoading && this.props.items.data.map */}
+          {!this.props.items.isLoading && this.props.items.suggess.map((v, i) => { 
+          return (
             <View style={styles.recommendation}>
-              <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
-              <Text style={styles.textBody}>Food Name</Text>
+              <Image style={styles.imageItem} source={{uri: APP_URL.concat(`src/images/${v.image}`)}}/>
+              <Text style={styles.textBody}>{v.item_name}</Text>
               <Item style={styles.itemText} noBorder>
-              <Text style={styles.textRating}>4.5</Text>
-              <Text style={styles.textPrice}>Rp 10.000</Text>
+              <View style = { styles.Rating }>
+                              <Ratings
+                                  fullStarColor = { 'orange' }
+                                  starSize = { 12 }
+                                  disabled = { true }
+                                  maxStars = { 5 }
+                                  rating = { v.rating } 
+                              />
+                            </View>
+              <Text style={styles.textPrice}>Rp. {v.price}</Text>
               </Item>
             </View> 
-            <View style={styles.recommendation}>
-              <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
-              <Text style={styles.textBody}>Food Name</Text>
-              <Item style={styles.itemText} noBorder>
-              <Text style={styles.textRating}>4.5</Text>
-              <Text style={styles.textPrice}>Rp 10.000</Text>
-              </Item>
-            </View>  
+            )
+           })} 
           </View>
-          <View style={styles.row}>
-            <View style={styles.recommendation}>
-              <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
-              <Text style={styles.textBody}>Food Name</Text>
-              <Item style={styles.itemText} noBorder>
-              <Text style={styles.textRating}>4.5</Text>
-              <Text style={styles.textPrice}>Rp 10.000</Text>
-              </Item>
-            </View> 
-            <View style={styles.recommendation}>
-              <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
-              <Text style={styles.textBody}>Food Name</Text>
-              <Item style={styles.itemText} noBorder>
-              <Text style={styles.textRating}>4.5</Text>
-              <Text style={styles.textPrice}>Rp 10.000</Text>
-              </Item>
-            </View>  
-          </View>
-          <View style={styles.row}>
-            <View style={styles.recommendation}>
-              <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
-              <Text style={styles.textBody}>Food Name</Text>
-              <Item style={styles.itemText} noBorder>
-              <Text style={styles.textRating}>4.5</Text>
-              <Text style={styles.textPrice}>Rp 10.000</Text>
-              </Item>
-            </View> 
-            <View style={styles.recommendation}>
-              <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
-              <Text style={styles.textBody}>Food Name</Text>
-              <Item style={styles.itemText} noBorder>
-              <Text style={styles.textRating}>4.5</Text>
-              <Text style={styles.textPrice}>Rp 10.000</Text>
-              </Item>
-            </View>  
-          </View>
+
           </ScrollView>
         </View>
           </ScrollView>   
@@ -326,3 +343,12 @@ export default class DetailItem extends Component {
     )
   }
 }
+
+const mapStateToProps = state =>{
+  return{
+      items: state.items,
+      comment : state.comment
+  }
+}
+
+export default connect(mapStateToProps)(DetailItem)
