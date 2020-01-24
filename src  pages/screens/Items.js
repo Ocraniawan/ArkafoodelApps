@@ -4,6 +4,11 @@ import { Container, Header, Left, Body, Right, Button, Icon, Title, CardItem, It
 import Headers from '../component/header'
 import Icons from 'react-native-vector-icons/FontAwesome'
 
+import {connect} from 'react-redux'
+import {getItems} from '../redux/action/menu'
+import {APP_URL} from '../resources/config'
+
+
 const styles = StyleSheet.create({
     root:{
         flex: 1,
@@ -28,6 +33,7 @@ const styles = StyleSheet.create({
     },
     row:{
         flex : 1,
+        marginBottom: 10,
     },
     cardItem:{
         flex:1,
@@ -84,12 +90,26 @@ const styles = StyleSheet.create({
 
 })
 
-export default class Items extends Component {
+
+class Items extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            isLoading: true,
+        }
+    }
+
+async componentDidMount() {
+    await this.props.dispatch(getItems())
+    await this.setState({isLoading:false})
+}    
+
+
     render() {
         return (
             <>
             <Container>
-                <View style={StyleSheet.root}>
+                <View style={styles.root}>
                 {/* <Headers /> */}
                 <Item regular style={styles.searchBar}>
                     <Icons name="search" style={styles.icon} />
@@ -97,182 +117,55 @@ export default class Items extends Component {
                 </Item>
 
                 {/* Item */}
+                {/* <View style={{marginBottom:10,}}> */}
                 <ScrollView vertical>
                 <View style={styles.row}>
-                <View style={styles.cardItem}>
-                    <Item>
-                        <Left>
-                        <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')}>
-                            <Image style={styles.image} source={require('../../Images/DummyItem.jpg')}/>
-                        </TouchableOpacity>
-                        </Left>
-                        <Body>
-                            <Text style={styles.foodName}>Ayam Geprek Sambalado Goyang</Text>
-                            <Text style={styles.price}>Rp 10.000</Text>
-                            <View style={styles.counter}>
-                            <Item style={styles.item}>
-                            <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')} style={styles.addCart}>
-                                <Icons name='list' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
+                
+                {!this.state.isLoading && this.props.items.data.map((v, i) =>{
+                    return(
+                        <View key= {v.id_item} style={styles.cardItem}>
+                        <Item>
+                            <Left>
+                            <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail',{id:v.id_item})}>
+                                <Image style={styles.image} source={{uri: APP_URL.concat(`src/images/${v.image}`)}}/>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.addCart}>
-                                <Icons name='cart-plus' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
-                            </TouchableOpacity>
-                            </Item>
-                            </View>
-                        </Body>
-                    </Item>
-                </View>
-                <View style={styles.cardItem}>
-                    <Item>
-                        <Left>
-                        <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')}>
-                            <Image style={styles.image} source={require('../../Images/DummyItem.jpg')}/>
-                        </TouchableOpacity>
-                        </Left>
-                        <Body>
-                            <Text style={styles.foodName}>Ayam Geprek Sambalado Goyang</Text>
-                            <Text style={styles.price}>Rp 10.000</Text>
-                            <View style={styles.counter}>
-                            <Item style={styles.item}>
-                            <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')} style={styles.addCart}>
-                                <Icons name='list' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.addCart}>
-                                <Icons name='cart-plus' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
-                            </TouchableOpacity>
-                            </Item>
-                            </View>
-                        </Body>
-                    </Item>
-                </View>
+                            </Left>
+                            <Body>
+                                <Text style={styles.foodName}>{v.item_name}</Text>
+                                <Text style={styles.price}>Rp {v.price}</Text>
+                                <View style={styles.counter}>
+                                <Item style={styles.item}>
+                                <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')} style={styles.addCart}>
+                                    <Icons name='list' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.addCart}>
+                                    <Icons name='cart-plus' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
+                                </TouchableOpacity>
+                                </Item>
+                                </View>
+                            </Body>
+                        </Item>
+                    </View>                        
+                    )
 
-                <View style={styles.cardItem}>
-                    <Item>
-                        <Left>
-                        <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')}>
-                            <Image style={styles.image} source={require('../../Images/DummyItem.jpg')}/>
-                        </TouchableOpacity>
-                        </Left>
-                        <Body>
-                            <Text style={styles.foodName}>Ayam Geprek Sambalado Goyang</Text>
-                            <Text style={styles.price}>Rp 10.000</Text>
-                            <View style={styles.counter}>
-                            <Item style={styles.item}>
-                            <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')} style={styles.addCart}>
-                                <Icons name='list' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.addCart}>
-                                <Icons name='cart-plus' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
-                            </TouchableOpacity>
-                            </Item>
-                            </View>
-                        </Body>
-                    </Item>
-                </View>
 
-                <View style={styles.cardItem}>
-                    <Item>
-                        <Left>
-                        <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')}>
-                            <Image style={styles.image} source={require('../../Images/DummyItem.jpg')}/>
-                        </TouchableOpacity>
-                        </Left>
-                        <Body>
-                            <Text style={styles.foodName}>Ayam Geprek Sambalado Goyang</Text>
-                            <Text style={styles.price}>Rp 10.000</Text>
-                            <View style={styles.counter}>
-                            <Item style={styles.item}>
-                            <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')} style={styles.addCart}>
-                                <Icons name='list' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.addCart}>
-                                <Icons name='cart-plus' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
-                            </TouchableOpacity>
-                            </Item>
-                            </View>
-                        </Body>
-                    </Item>
-                </View>
-
-                <View style={styles.cardItem}>
-                    <Item>
-                        <Left>
-                        <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')}>
-                            <Image style={styles.image} source={require('../../Images/DummyItem.jpg')}/>
-                        </TouchableOpacity>
-                        </Left>
-                        <Body>
-                            <Text style={styles.foodName}>Ayam Geprek Sambalado Goyang</Text>
-                            <Text style={styles.price}>Rp 10.000</Text>
-                            <View style={styles.counter}>
-                            <Item style={styles.item}>
-                            <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')} style={styles.addCart}>
-                                <Icons name='list' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.addCart}>
-                                <Icons name='cart-plus' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
-                            </TouchableOpacity>
-                            </Item>
-                            </View>
-                        </Body>
-                    </Item>
-                </View>
-
-                <View style={styles.cardItem}>
-                    <Item>
-                        <Left>
-                        <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')}>
-                            <Image style={styles.image} source={require('../../Images/DummyItem.jpg')}/>
-                        </TouchableOpacity>
-                        </Left>
-                        <Body>
-                            <Text style={styles.foodName}>Ayam Geprek Sambalado Goyang</Text>
-                            <Text style={styles.price}>Rp 10.000</Text>
-                            <View style={styles.counter}>
-                            <Item style={styles.item}>
-                            <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')} style={styles.addCart}>
-                                <Icons name='list' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.addCart}>
-                                <Icons name='cart-plus' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
-                            </TouchableOpacity>
-                            </Item>
-                            </View>
-                        </Body>
-                    </Item>
-                </View>
-
-                <View style={styles.cardItem}>
-                    <Item>
-                        <Left>
-                        <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')}>
-                            <Image style={styles.image} source={require('../../Images/DummyItem.jpg')}/>
-                        </TouchableOpacity>
-                        </Left>
-                        <Body>
-                            <Text style={styles.foodName}>Ayam Geprek Sambalado Goyang</Text>
-                            <Text style={styles.price}>Rp 10.000</Text>
-                            <View style={styles.counter}>
-                            <Item style={styles.item}>
-                            <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')} style={styles.addCart}>
-                                <Icons name='list' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.addCart}>
-                                <Icons name='cart-plus' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
-                            </TouchableOpacity>
-                            </Item>
-                            </View>
-                        </Body>
-                    </Item>
-                </View>
-
+                })}
 
                 </View>
                 </ScrollView>
                 </View>
+                {/* </View> */}
             </Container>
             </>
 
         )
     }
 }
+
+const mapStateToProps = state =>{
+    return{
+        items: state.items
+    }
+}
+
+export default connect(mapStateToProps)(Items)
