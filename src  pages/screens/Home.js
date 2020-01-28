@@ -3,9 +3,14 @@ import { Text, View, StyleSheet, Image, ScrollView, ImageBackground} from 'react
 import {Item, ListItem, Separator, Input, Card, Container, Footer, FooterTab,Icon, Button, CardItem, Left, Thumbnail, Body, Right, } from 'native-base'
 import Icons from 'react-native-vector-icons/FontAwesome'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-
+import {connect} from 'react-redux'
+import {getItems, getDetailItem} from '../redux/action/menu'
+import {getCategories, getCategoryById} from '../redux/action/categories'
+import {getRestaurants, getDetailRestaurants} from '../redux/action/restaurant'
+import Ratings from 'react-native-star-rating'
 
 import Headers from '../component/header'
+
 const styles = StyleSheet.create({
   root:{
     flex : 1,
@@ -66,7 +71,6 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
-    elevation: 1,
     height: 140,
     width: 150,
     // borderRadius: 100,
@@ -161,7 +165,26 @@ const styles = StyleSheet.create({
 
 
 
-export default class Home extends Component {
+class Home extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+        // data: {},
+        // isFetched: false
+    }
+}
+
+async componentDidMount(){
+  const {id} = this.props.navigation.state.params
+  await this.props.dispatch(getItems)
+  await this.props.dispatch(getRestaurants)
+  await this.props.dispatch(getCategories)
+  await this.props.dispatch(getDetailItem(id))
+  await this.props.dispatch(getDetailRestaurants(id))
+  // await this.props.dispatch(getCategoryById(id))
+}
+
+
   render() {
     return (
       <>
@@ -175,7 +198,7 @@ export default class Home extends Component {
         {/* </Header> */}
         
 
-      {/* Carosel */}
+        {/* Carosel */}
 
 
 
@@ -187,41 +210,57 @@ export default class Home extends Component {
               </Left>
         </ListItem>
         
-        {/* <ScrollView horizontal> */}
+        {/* <ScrollView horizontal>  Categorie*/}
           <View style={styles.row}>
             <View style={styles.cardCategories}>
+            <TouchableOpacity onPress= { ()=>this.props.navigation.navigate('CategoriesId',{id:7})}>              
               <Image style={styles.imageCategories} source={{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgM7L5s99IRbOPcMC_ySJiTZFyWIVqADSjEtKyUCCa_FA9ZCCS&s'}}/>
               <Text style={styles.textBody}>Juice</Text>
+              </TouchableOpacity>
             </View> 
           <View style={styles.cardCategories}>
+            <TouchableOpacity onPress= { ()=>this.props.navigation.navigate('CategoriesId',{id:3})}>              
               <Image style={styles.imageCategories} source={{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1-z_864yH4lGc2jRV7dXcf8qJveC-g_fEsRZX_RPdsRXADiDZWg&s'}}/>
               <Text style={styles.textBody}>Fish</Text>
+            </TouchableOpacity>
             </View>
             <View style={styles.cardCategories}>
+            <TouchableOpacity onPress= { ()=>this.props.navigation.navigate('CategoriesId',{id:1})}>              
               <Image style={styles.imageCategories} source={{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOP2oyWisuI3Qy_xnZBlZi3aVDb7J6rPLeWVpN-UdhXJixiBPy&s'}}/>
               <Text style={styles.textBody}>Duck</Text>
+              </TouchableOpacity>
             </View> 
             <View style={styles.cardCategories}>
+            <TouchableOpacity onPress= { ()=>this.props.navigation.navigate('CategoriesId',{id:6})}>              
               <Image style={styles.imageCategories} source={{uri:'https://cdn0.iconfinder.com/data/icons/cartoon-food/512/Food_512-01.png'}}/>
               <Text style={styles.textBody}>Rice</Text>
+              </TouchableOpacity>
             </View> 
           </View>
           <View style={styles.row}>
             <View style={styles.cardCategories}>
+            <TouchableOpacity onPress= { ()=>this.props.navigation.navigate('CategoriesId',{id:4})}>              
               <Image style={styles.imageCategories} source={{uri:'https://www.pngrepo.com/png/17299/170/cup.png'}}/>
               <Text style={styles.textBody}>Coffe</Text>
+              </TouchableOpacity>
             </View> 
           <View style={styles.cardCategories}>
+          <TouchableOpacity onPress= { ()=>this.props.navigation.navigate('CategoriesId',{id:5})}>              
               <Image style={styles.imageCategories} source={{uri:'https://www.pngrepo.com/png/164664/170/chicken.png'}}/>
               <Text style={styles.textBody}>Chicken</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.cardCategories}>
+            <TouchableOpacity onPress= { ()=>this.props.navigation.navigate('CategoriesId',{id:2})}>              
               <Image style={styles.imageCategories} source={{uri:'https://cdn2.iconfinder.com/data/icons/food-and-drinks-flat-circle-shadow-vol-4/100/noodle__food__pasta__asia__fastfood__chinese__eat-512.png'}}/>
               <Text style={styles.textBody}>Noodles</Text>
+              </TouchableOpacity>
             </View> 
             <View style={styles.cardCategories}>
+            <TouchableOpacity onPress= { ()=>this.props.navigation.navigate('Category')}>              
               <Image style={styles.imageCategories} source={{uri:'https://cdn0.iconfinder.com/data/icons/kameleon-free-pack-rounded/110/Food-Dome-512.png'}}/>
               <Text style={styles.textBody}>Others</Text>
+              </TouchableOpacity>
             </View> 
           </View>
         {/* </ScrollView> */}
@@ -234,7 +273,6 @@ export default class Home extends Component {
         <ListItem noBorder>
               <Left>
                 <Text style={{fontWeight:'bold', color: '#494949'}}>Recommended For You</Text>
-                {/* <Text >Handpicked based on your past order</Text> */}
               </Left>
               <Right>
                 <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Item')}>
@@ -244,65 +282,30 @@ export default class Home extends Component {
         </ListItem>
           <ScrollView horizontal>
           <View style={styles.row}>
-          <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')}>
-          <View style={styles.cardItem}>
-              <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
-              <Text style={styles.textBody}>Food Name</Text>
+          {!this.state.isLoading && this.props.items.data.map((v, i) =>{
+            return(
+              <View key= {v.id_item} style={styles.cardItem}>
+            <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail',{id:v.id_item})}>
+              <Image style={styles.imageItem} source={{uri: APP_URL.concat(`src/images/${v.image}`)}}/>
+              <Text style={styles.textBody}>{v.item_name}</Text>
               <Item style={styles.itemText} noBorder>
-              <Text style={styles.textRating}>4.5</Text>
-              <Text style={styles.textPrice}>Rp 10.000</Text>
+            <Text style={styles.textRating}>
+              <Ratings
+                fullStarColor = { 'orange' }
+                starSize = { 12 }
+                disabled = { true }
+                maxStars = { 5 }
+                rating = { v.rating } 
+              />
+            </Text>
+              <Text style={styles.textPrice}>{v.price}</Text>
               </Item>
+          </TouchableOpacity>          
             </View> 
-          </TouchableOpacity>
-            <View style={styles.cardItem}>
-              <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
-              <Text style={styles.textBody}>Food Name</Text>
-              <Item style={styles.itemText} noBorder>
-              <Text style={styles.textRating}>4.5</Text>
-              <Text style={styles.textPrice}>Rp 10.000</Text>
-              </Item>
-            </View>  
-          </View>
-          <View style={styles.row}>
-            <View style={styles.cardItem}>
-              <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
-              <Text style={styles.textBody}>Food Name</Text>
-              <Item style={styles.itemText} noBorder>
-              <Text style={styles.textRating}>4.5</Text>
-              <Text style={styles.textPrice}>Rp 10.000</Text>
-              </Item>
-            </View> 
-            <View style={styles.cardItem}>
-              <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
-              <Text style={styles.textBody}>Food Name</Text>
-              <Item style={styles.itemText} noBorder>
-              <Text style={styles.textRating}>4.5</Text>
-              <Text style={styles.textPrice}>Rp 10.000</Text>
-              </Item>
-            </View>
-          </View>
-          <View style={styles.row}>
-            <View style={styles.cardItem}>
-              <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
-              <Text style={styles.textBody}>Food Name</Text>
-              <Item style={styles.itemText} noBorder>
-              <Text style={styles.textRating}>4.5</Text>
-              <Text style={styles.textPrice}>Rp 10.000</Text>
-              </Item>
-            </View> 
-            <View style={styles.cardItem}>
-              <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
-              <Text style={styles.textBody}>Food Name</Text>
-              <Item style={styles.itemText} noBorder>
-              <Text style={styles.textRating}>4.5</Text>
-              <Text style={styles.textPrice}>Rp 10.000</Text>
-              </Item>
-            </View>
-          </View>
+          )
+        })}
+        </View>
           </ScrollView>
-          
-
-
         </View>
 
 
@@ -315,20 +318,22 @@ export default class Home extends Component {
                 <Text style={{fontWeight:'bold', color: '#494949'}}>Our Partners</Text>
               </Left>
               <Right>
-              <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Item')}>
+                <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Restaurant')}>
                 <Text style={{color:'#2578D9', fontWeight:'bold'}}>See All</Text>
-              </TouchableOpacity>
+                </TouchableOpacity>
               </Right>
         </ListItem>  
         <View style={styles.restaurant}>
         <ScrollView horizontal>
         <View style={styles.row}>
-        <Card style={styles.cardRestaurant}>
+        {!this.state.isLoading && this.props.restaurants.data.map((v, i) =>{
+        return(
+        <Card key= {v.id_restaurant} style={styles.cardRestaurant}>
           <CardItem style={{height:50}}>
               <Left>
                 <Thumbnail style={{height:40, width:40}} source={{uri: 'https://cdn4.vectorstock.com/i/1000x1000/31/73/fast-food-combo-icon-hamburge-pizza-drink-vector-21933173.jpg'}} />
                 <Body>
-                  <Text style={styles.restaurantName}>Arkademy Restaurant</Text>
+                  <Text style={styles.restaurantName}>{v.restaurant_name}</Text>
                   <Text note style={{color: '#696969'}}>Bogor</Text>
                 </Body>
               </Left>
@@ -337,9 +342,11 @@ export default class Home extends Component {
              <Image source={{uri: 'https://blogs.biomedcentral.com/on-medicine/wp-content/uploads/sites/6/2019/09/iStock-1131794876.t5d482e40.m800.xtDADj9SvTVFjzuNeGuNUUGY4tm5d6UGU5tkKM0s3iPk-620x342.jpg'}} style={{height: 150, width: null, flex: 1}}/>
            </CardItem>
           <CardItem style={{height:50}}>
-            <Text style={{fontSize:12, color: '#696969'}}>Start Your day with a cup of Coffe</Text>
+            <Text style={{fontSize:12, color: '#696969'}}>{v.description}</Text>
           </CardItem>
         </Card>
+        )
+      })}
 
         <Card style={styles.cardRestaurant}>
           <CardItem style={{height:50}}>
@@ -479,29 +486,19 @@ export default class Home extends Component {
 
 
         </View>
-        {/* <Footer>
-          <FooterTab style={{backgroundColor:'#F7F7F7'}}>
-            <Button vertical>
-              <Icon name="apps" style={{fontSize:30, color:'black'}}/>
-              <Text>Home</Text>
-            </Button>
-            <Button vertical>
-              <Micons name="food" style={{fontSize:30, color:'black'}}/>
-              <Text>Food</Text>
-            </Button>
-            <Button vertical>
-              <Iicons name="md-restaurant" style={{fontSize:30, color:'black'}} />
-              <Text>Restaurant</Text>
-            </Button>
-            <Button vertical>
-              <Icon name="person" style={{fontSize:30, color:'black'}}/>
-              <Text>Contact</Text>
-            </Button>
-          </FooterTab>
-        </Footer> */}
       </Container>
       </>
     )
   }
 }
+
+const mapStateToProps = state =>{
+  return{
+      items: state.items,
+      categories: state.categories,
+      restaurant: state.restaurant,
+  }
+}
+
+export default connect(mapStateToProps)(Home)
 

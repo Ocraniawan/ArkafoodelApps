@@ -4,6 +4,8 @@ import {Container, Header, Left, Body, Right, Button, Icon, Title, CardItem, Ite
 import Counter from "react-native-counters";
 import Feather from 'react-native-vector-icons/Feather';
 import Headers from '../component/header'
+import {connect} from 'react-redux'
+import {getCart} from '../redux/action/cart'
 
 
 const minusIcon = (isMinusDisabled, touchableDisabledColor, touchableColor) => {
@@ -58,7 +60,21 @@ const styles = StyleSheet.create({
   },
 }) 
 
-export default class Carts extends Component {
+class Carts extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+        isLoading: true,
+    }
+}
+
+// async componentDidMount(){
+//   const {id} = this.props.params
+//   this.props.dispatch(getCart(id,this.props.login.auth))
+//   await this.setState({isLoading:false})
+// }
+
+
   render() {
     return (
       <>
@@ -69,7 +85,9 @@ export default class Carts extends Component {
         {/* <ListItem/> */}
         <View>
         <View style={styles.row}>
-            <View style={styles.cardItem}>
+        {/* {!this.state.isLoading && this.props.carts.data.map((v, i) =>{
+        return( */}
+            <View  style={styles.cardItem}>
             <Item>
               <Left>
               <Image style={styles.imageDetail} source={require('../../Images/DummyItem.jpg')}/>
@@ -83,7 +101,7 @@ export default class Carts extends Component {
               </Body>
             </Item>
             </View>
-            <View style={styles.cardItem}>
+            <View  style={styles.cardItem}>
             <Item>
               <Left>
               <Image style={styles.imageDetail} source={require('../../Images/DummyItem.jpg')}/>
@@ -97,6 +115,10 @@ export default class Carts extends Component {
               </Body>
             </Item>
             </View>
+            {/* )
+
+
+          })} */}
         </View>
         </View>
         </ScrollView>
@@ -119,3 +141,11 @@ export default class Carts extends Component {
     )
   }
 }
+const mapStateToProps = state =>{
+  return{
+      carts: state.carts,
+      login: state.login
+  }
+}
+
+export default connect(mapStateToProps)(Carts)
