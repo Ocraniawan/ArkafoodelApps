@@ -74,7 +74,7 @@ const CategoryNav = createStackNavigator({
         },
     },
     CategoriesId: {
-        screen: DetailCategories,
+        screen: CategoriesById,
         navigationOptions: {
             headerShown: false,
         },
@@ -216,7 +216,7 @@ const SwitchNav = createSwitchNavigator({
     LandingNav,
     BottomNav,
 }, {
-    initialRouteName: 'LandingNav',
+    initialRouteName: 'BottomNav',
 })
 
 

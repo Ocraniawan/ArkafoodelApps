@@ -8,7 +8,7 @@ import {getItems, getDetailItem} from '../redux/action/menu'
 import {getCategories, getCategoryById} from '../redux/action/categories'
 import {getRestaurants, getDetailRestaurants} from '../redux/action/restaurant'
 import Ratings from 'react-native-star-rating'
-
+import {APP_URL} from '../resources/config'
 import Headers from '../component/header'
 
 const styles = StyleSheet.create({
@@ -496,7 +496,7 @@ const mapStateToProps = state =>{
   return{
       items: state.items,
       categories: state.categories,
-      restaurant: state.restaurant,
+      restaurants: state.restaurants,
   }
 }
 
