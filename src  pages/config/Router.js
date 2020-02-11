@@ -144,7 +144,7 @@ const BottomNav = createBottomTabNavigator({
         screen: HomeNav,
         navigationOptions: {
             tabBarIcon: ({ tintColor }) => {
-                return <Icon name="home" size={30} color={tintColor} />;
+                return <Icon name="home-circle" size={30} color={tintColor} />;
             },
         },
     },
@@ -168,7 +168,7 @@ const BottomNav = createBottomTabNavigator({
         screen: ProfileNav,
         navigationOptions: {
             tabBarIcon: ({ tintColor }) => {
-                return <Icon name="face-profile" size={30} color={tintColor} />;
+                return <Icon name="account-circle" size={30} color={tintColor} />;
             },
         },
     },
@@ -181,6 +181,7 @@ const BottomNav = createBottomTabNavigator({
         style: {
             backgroundColor: 'white',
             borderTopColor: 'transparent',
+            height: 60,
         }
     }
 })

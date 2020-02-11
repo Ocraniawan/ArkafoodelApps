@@ -4,21 +4,28 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  StatusBar
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default class Profile extends Component {
 
   render() {
     return (
+      <>
+      <StatusBar barStyle="light-content" backgroundColor="#075E54" />
       <View style={styles.container}>
-          <View style={styles.header}></View>
+          <View style={styles.header}>
+        <LinearGradient colors={['#188168', '#95CE67']} style={styles.home}>
+        </LinearGradient>
+          </View>
           <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
           <View style={styles.body}>
             <View style={styles.bodyContent}>
               <Text style={styles.name}>Ocraniawan Patattan</Text>
-              <Text style={styles.info}>ocraniawanpatattan</Text>
+              <Text style={styles.info}>ocraniawan@arkademian</Text>
               <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
               
               <TouchableOpacity style={styles.buttonContainer}>
@@ -32,6 +39,7 @@ export default class Profile extends Component {
             </View>
         </View>
       </View>
+      </>
     );
   }
 }
@@ -39,6 +47,11 @@ export default class Profile extends Component {
 const styles = StyleSheet.create({
   header:{
     backgroundColor: "#7EC544",
+    height:200,
+  },
+  home: {
+    alignItems: 'center',
+    justifyContent: 'center',
     height:200,
   },
   avatar: {
@@ -72,14 +85,15 @@ const styles = StyleSheet.create({
   },
   info:{
     fontSize:16,
-    color: "#7EC544",
+    color: "#188168",
     marginTop:10
   },
   description:{
     fontSize:16,
     color: "#696969",
-    marginTop:10,
-    textAlign: 'center'
+    marginTop:15,
+    textAlign: 'center',
+    marginBottom:30,
   },
   buttonContainer: {
     marginTop:10,
@@ -87,7 +101,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom:20,
+    marginBottom:10,
     width:250,
     borderRadius:30,
     backgroundColor: "#7EC544",
