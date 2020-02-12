@@ -1,72 +1,48 @@
-import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image } from 'react-native'
-import{Header, Item, Input} from 'native-base'
+import React, {Component} from 'react';
+import {Text, View, StyleSheet, Image, TextInput} from 'react-native';
 import Icons from 'react-native-vector-icons/FontAwesome'
-import Sicons from 'react-native-vector-icons/SimpleLineIcons'
 
+
+export default class Header extends Component {
+  render() {
+    return (
+      <>
+      <View style={styles.header}>
+        <View style={styles.wraplogo}>
+          <Text style={styles.logo}>Arkafoodel</Text>
+        </View>
+        </View>
+      </>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
-header:{
-    backgroundColor: 'white'
-  },
-  search:{
-    backgroundColor: 'white',
-    marginRight : 20,
-    marginLeft: 20,
-    justifyContent: "space-between"
-    
-  },
-  icon:{
-    fontSize: 20,
-    paddingLeft: 10,
-    paddingRight: 20,
-    color: '#9D9EA3',
-  },
-  textHeader:{
-    color: '#719B3B',
-    fontFamily: 'Narrow',
+  logo: {
     fontWeight: 'bold',
-    // fontStyle: 'italic',
-    fontSize: 20,
+    fontStyle: 'italic',
+    fontSize: 25,
+    color: '#fff',
   },
-  searchBar:{
-    marginTop: 10,
-    marginLeft: 10,
-    // marginRight: 10,
-    borderRadius: 5,
-    height: 40,
-    backgroundColor: '#F7F7F7',
-    marginBottom: 10,
-},
-  inputBar:{
-    fontSize: 14,
-},
-icon:{
-    fontSize: 20,
-    paddingLeft: 10,
-    paddingRight: 20,
-    color: '#9D9EA3',
-},
-image:{
-  height: 40,
-  width: 40,
-  // marginRight: 25,
-}
-
-})
-
-export default class Headers extends Component {
-    render() {
-        return (
-            <View style={styles.header}>
-            <Header searchBar rounded style={styles.header}>
-            <Item style={styles.search}>
-            <Image source={require('../../Images/icons.png')} style={styles.image}/>
-              <Text style={styles.textHeader}>A R K A F O O D E L</Text>
-              <Image source={require('../../Images/icons.png')} style={styles.image}/>
-            </Item>
-          </Header>
-            </View>
-        )
-    }
-}
+  wraplogo: {marginLeft: 30, marginTop: 10, marginBottom: 15, flexDirection:"row"},
+  search: {
+    borderWidth: 1,
+    borderColor: '#fff',
+    borderRadius: 4,
+    height: 50,
+    paddingLeft: 60,
+    paddingRight: 14,
+    backgroundColor: '#fff',
+  },
+  iconsearch: {
+    height: 20,
+    width: 20,
+    position: 'absolute',
+    top: 15,
+    left: 20,
+  },
+  header: {
+    backgroundColor: '#188168'
+  },
+  wrapsearch: {marginHorizontal: 30},
+});
