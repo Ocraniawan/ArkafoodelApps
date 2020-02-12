@@ -144,11 +144,6 @@ async componentDidMount(){
         </View>
           </ScrollView>
         </View>
-
-
-
-
-
         {/* //**Restaurant */ }
         <ListItem noBorder>
               <Left>
@@ -184,7 +179,6 @@ async componentDidMount(){
         </Card>
         )
       })}
-
         <Card style={styles.cardRestaurant}>
           <CardItem style={{height:50}}>
               <Left>

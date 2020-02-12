@@ -104,7 +104,7 @@ const CartNav = createStackNavigator({
     Checkout: {
         screen: Checkout,
         navigationOptions: {
-            headerShown: false,
+
         },
     },
     Rating: {

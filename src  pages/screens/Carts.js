@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View , Image, StyleSheet, ScrollView, Touchable, TouchableOpacity} from 'react-native'
+import { Text, View , Image, StyleSheet, ScrollView} from 'react-native'
 import {Container, Header, Left, Body, Right, Button, Icon, Title, CardItem, Item, Card, Footer, FooterTab } from 'native-base'
 import Counter from "react-native-counters";
 import Feather from 'react-native-vector-icons/Feather';

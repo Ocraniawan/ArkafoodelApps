@@ -64,7 +64,7 @@ async componentDidMount() {
                 </View>
               </Container>
       </>
-        )
+      )
     }
 }
 

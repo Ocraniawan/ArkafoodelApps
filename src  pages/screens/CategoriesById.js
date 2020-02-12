@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image, } from 'react-native'
-import { Container, Header, Left, Body, Right, Button, Icon, Title, CardItem, Item,  Input } from 'native-base'
+import { Container, Header, Left, Body, Right, Button, Icon, Title, CardItem, Item, ListItem,  Input } from 'native-base'
 import Headers from '../component/header'
-import Icons from 'react-native-vector-icons/FontAwesome'
+import IconF from 'react-native-vector-icons/FontAwesome'
+import Icons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import {connect} from 'react-redux'
 import {getCategoryById} from '../redux/action/categories'
@@ -116,19 +117,15 @@ class CategoriesById extends Component {
                 <View style={styles.root}>
                 <Headers />
                 <Item regular style={styles.searchBar}>
-                    <Icons name="search" style={styles.icon} />
+                    <IconF name="search" style={styles.icon} />
                     <Input style={styles.inputBar} placeholder="Let's Find some Food..." placeholderTextColor='#333333' />
                 </Item>
-
-                {/* Item */}
-                {/* <View style={{marginBottom:10,}}> */}
                 <ScrollView vertical>
                 <View style={styles.row}>
-                
                 {!this.state.isLoading && this.props.categories.data.map((v, i) =>{
                     return(
                         <View key= {v.id_item} style={styles.cardItem}>
-                        <Item>
+                        <Item noBorder>
                             <Left>
                             <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail',{id:v.id_item})}>
                                 <Image style={styles.image} source={{uri: APP_URL.concat(`src/images/${v.image}`)}}/>
@@ -140,10 +137,10 @@ class CategoriesById extends Component {
                                 <View style={styles.counter}>
                                 <Item style={styles.item}>
                                 <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')} style={styles.addCart}>
-                                    <Icons name='list' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
+                                    <Icons name='eye' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.addCart}>
-                                    <Icons name='cart-plus' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
+                                    <Icons name='cart' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
                                 </TouchableOpacity>
                                 </Item>
                                 </View>
@@ -151,10 +148,7 @@ class CategoriesById extends Component {
                         </Item>
                     </View>                        
                     )
-
-
                 })}
-
                 </View>
                 </ScrollView>
                 </View>
