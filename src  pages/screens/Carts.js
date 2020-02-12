@@ -19,6 +19,7 @@ const plusIcon = (isPlusDisabled, touchableDisabledColor, touchableColor) => {
 const styles = StyleSheet.create({
   root:{
     flex : 1,
+    backgroundColor: '#F1F1F1'
   },
   row : {
     flex : 1,
@@ -82,13 +83,12 @@ class Carts extends Component {
       <View style={styles.root}>
         <Headers />
         <ScrollView vertical>
-        {/* <ListItem/> */}
         <View>
         <View style={styles.row}>
         {/* {!this.state.isLoading && this.props.carts.data.map((v, i) =>{
         return( */}
             <View  style={styles.cardItem}>
-            <Item>
+            <Item noBorder>
               <Left>
               <Image style={styles.imageDetail} source={require('../../Images/DummyItem.jpg')}/>
               </Left>
@@ -102,7 +102,7 @@ class Carts extends Component {
             </Item>
             </View>
             <View  style={styles.cardItem}>
-            <Item>
+            <Item noBorder>
               <Left>
               <Image style={styles.imageDetail} source={require('../../Images/DummyItem.jpg')}/>
               </Left>
@@ -115,23 +115,16 @@ class Carts extends Component {
               </Body>
             </Item>
             </View>
-            {/* )
-
-
-          })} */}
         </View>
         </View>
         </ScrollView>
         </View>
-
-
-
         <Footer >
           <FooterTab  style={{backgroundColor:'#F7F7F7'}}>
-            <Button>
-              <Text>Total</Text>
+            <Button disabled style={{borderRadius: 15, margin:10, backgroundColor:'#F7F7F7'}}>
+              <Text style={{color:'green', fontSize:16, fontWeight: 'bold'}}>Rp 9.999.999</Text>
             </Button>
-            <Button active style={{backgroundColor:'green', borderRadius: 15, paddingBottom: 10, marginEnd: 10,}}>
+            <Button active onPress = { ()=>this.props.navigation.navigate('Checkout')} style={{backgroundColor:'green', borderRadius: 15, paddingBottom: 10, marginEnd: 10,}}>
               <Text style={{color:'white'}}>Check Out</Text>
             </Button>
           </FooterTab>

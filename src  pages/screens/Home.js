@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image, ScrollView, ImageBackground} from 'react-native'
+import { Text, View, StyleSheet, Image, ScrollView, ImageBackground, StatusBar} from 'react-native'
 import {Item, ListItem, Separator, Input, Card, Container, Footer, FooterTab,Icon, Button, CardItem, Left, Thumbnail, Body, Right, } from 'native-base'
 import Icons from 'react-native-vector-icons/FontAwesome'
 import { TouchableOpacity } from 'react-native-gesture-handler'
@@ -10,159 +10,6 @@ import {getRestaurants, getDetailRestaurants} from '../redux/action/restaurant'
 import Ratings from 'react-native-star-rating'
 import {APP_URL} from '../resources/config'
 import Headers from '../component/header'
-
-const styles = StyleSheet.create({
-  root:{
-    flex : 1,
-
-  },
-  itemText:{
-    justifyContent: "space-between",
-    paddingLeft: 10,
-    paddingRight: 10,
-    borderBottomColor: 'transparent',
-
-  },
-  input:{
-    color: 'white',
-    borderColor: '#9D9EA3'
-  },
-
-  body:{
-    flex: 1,
-    // flexDirection: 'col',
-  },
-  row : {
-    flex : 1,
-    flexDirection: 'row',
-  },
-  cardItem:{
-    flex:1,
-    marginLeft: 15,
-    // marginRight:15,
-    marginTop: 10,
-    marginBottom: 5,
-    // paddingLeft: 15,
-    // backgroundColor: 'gray',
-    borderRadius: 5,
-    elevation: 1,
-    height: 190,
-  },
-  textBody:{
-    fontSize: 14,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    color: '#696969'
-  },
-  textPrice:{
-    fontSize: 12,
-    // textAlign: 'center',
-    fontWeight: 'bold',
-    color: 'orange',
-
-  },
-  textRating:{
-    fontSize: 12,
-    // textAlign: 'center',
-  },
-  imageItem:{
-    // marginLeft: 10,
-    // marginRight: 5,
-    marginBottom: 5,
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
-    height: 140,
-    width: 150,
-    // borderRadius: 100,
-    // textAlignVertical: 'center',
-  },
-  iIcons:{
-    fontSize: 20,
-    // paddingBottom: -10,
-    textAlign: 'right',
-    marginRight: 5,
-    marginTop: 5,
-    color: '#9D9EA3',
-  },
-
-  searchBar:{
-    marginTop: 10,
-    marginLeft: 10,
-    marginRight: 10,
-    // borderColor: '#9D9EA3',
-    borderRadius: 2,
-    height: 50,
-    backgroundColor: '#F7F7F7',
-    marginBottom: 10,
-  },
-  icon:{
-    fontSize: 20,
-    paddingLeft: 10,
-    paddingRight: 20,
-    color: '#9D9EA3',
-},
-  inputBar:{
-    fontSize: 14,
-    // textAlign: "center",
-    },
-    card:{
-      // height: 10,
-    },
-    restaurant:{
-      paddingLeft: 10,
-      paddingRight: 10,
-    },
-    cardRestaurant:{
-      height: 250,
-      width: 300,
-    },
-    Separator:{
-      height: 10,
-    },
-    divider:{
-      // borderTopColor: 'black'
-      marginTop: 20,
-      // height: 20,
-    },
-    categories:{
-      marginLeft: 10,
-      marginRight: 10,
-      // justifyContent: "center",
-    },
-    cardCategories:{
-      // flex:1,
-      // // paddingLeft: 10,
-      marginLeft: 10,
-      // // marginTop: 10,
-      // // marginRight: 10,
-      marginBottom: 10,
-      // borderRadius: 5,
-      // elevation: 1,
-      justifyContent: 'center'
-
-    },
-    imageCategories:{
-      marginTop: 5,
-      marginLeft: 5,
-      // marginRight: 5,
-      marginBottom: 2,
-      width: 65,
-      height: 65,
-      borderRadius: 100,
-      // alignContent: 'space-between'
-    },
-    separator:{
-      marginTop: 10,
-      height: 3,
-      fontSize: 3,
-    },
-    restaurantName:{
-      fontWeight: "bold",
-        color: '#494949',
-    }
-
-})
-
 
 
 class Home extends Component {
@@ -188,6 +35,7 @@ async componentDidMount(){
   render() {
     return (
       <>
+      <StatusBar barStyle="light-content" backgroundColor="#075E54" />
       <Container>
         <View style={styles.root}>
           <Headers />
@@ -195,12 +43,6 @@ async componentDidMount(){
             <Icons name="search" style={styles.icon} />
             <Input style={styles.inputBar} placeholder="Let's Find some Food..." placeholderTextColor='#333333' />
           </Item>
-        {/* </Header> */}
-        
-
-        {/* Carosel */}
-
-
 
         <ScrollView vertical>
         <View style={styles.categories} >
@@ -209,7 +51,6 @@ async componentDidMount(){
                 <Text style={{fontWeight:'bold', color: '#494949'}}>Categories</Text>
               </Left>
         </ListItem>
-        
         {/* <ScrollView horizontal>  Categorie*/}
           <View style={styles.row}>
             <View style={styles.cardCategories}>
@@ -491,6 +332,155 @@ async componentDidMount(){
     )
   }
 }
+
+const styles = StyleSheet.create({
+  root:{
+    flex : 1,
+    backgroundColor: '#F1F1F1'
+  },
+  itemText:{
+    justifyContent: "space-between",
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderBottomColor: 'transparent',
+  },
+  input:{
+    color: 'white',
+    borderColor: '#9D9EA3'
+  },
+
+  body:{
+    flex: 1,
+    // flexDirection: 'col',
+  },
+  row : {
+    flex : 1,
+    flexDirection: 'row',
+  },
+  cardItem:{
+    flex:1,
+    marginLeft: 15,
+    // marginRight:15,
+    marginTop: 10,
+    marginBottom: 5,
+    // paddingLeft: 15,
+    // backgroundColor: 'gray',
+    borderRadius: 5,
+    elevation: 1,
+    height: 190,
+  },
+  textBody:{
+    fontSize: 14,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: '#696969'
+  },
+  textPrice:{
+    fontSize: 12,
+    // textAlign: 'center',
+    fontWeight: 'bold',
+    color: 'orange',
+
+  },
+  textRating:{
+    fontSize: 12,
+    // textAlign: 'center',
+  },
+  imageItem:{
+    // marginLeft: 10,
+    // marginRight: 5,
+    marginBottom: 5,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
+    height: 140,
+    width: 150,
+    // borderRadius: 100,
+    // textAlignVertical: 'center',
+  },
+  iIcons:{
+    fontSize: 20,
+    // paddingBottom: -10,
+    textAlign: 'right',
+    marginRight: 5,
+    marginTop: 5,
+    color: '#9D9EA3',
+  },
+
+  searchBar:{
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 10,
+    // borderColor: '#9D9EA3',
+    borderRadius: 2,
+    height: 50,
+    backgroundColor: '#F7F7F7',
+    marginBottom: 10,
+  },
+  icon:{
+    fontSize: 20,
+    paddingLeft: 10,
+    paddingRight: 20,
+    color: '#9D9EA3',
+},
+  inputBar:{
+    fontSize: 14,
+    // textAlign: "center",
+    },
+    card:{
+      // height: 10,
+    },
+    restaurant:{
+      paddingLeft: 10,
+      paddingRight: 10,
+    },
+    cardRestaurant:{
+      height: 250,
+      width: 300,
+    },
+    Separator:{
+      height: 10,
+    },
+    divider:{
+      // borderTopColor: 'black'
+      marginTop: 20,
+      // height: 20,
+    },
+    categories:{
+      marginLeft: 10,
+      marginRight: 10,
+      // justifyContent: "center",
+    },
+    cardCategories:{
+      // flex:1,
+      // // paddingLeft: 10,
+      marginLeft: 10,
+      marginBottom: 10,
+      // borderRadius: 5,
+      elevation: 1,
+      justifyContent: 'center'
+
+    },
+    imageCategories:{
+      marginTop: 5,
+      marginLeft: 5,
+      // marginRight: 5,
+      marginBottom: 2,
+      width: 65,
+      height: 65,
+      borderRadius: 100,
+      // alignContent: 'space-between'
+    },
+    separator:{
+      marginTop: 10,
+      height: 3,
+      fontSize: 3,
+    },
+    restaurantName:{
+      fontWeight: "bold",
+        color: '#494949',
+    }
+
+})
 
 const mapStateToProps = state =>{
   return{
