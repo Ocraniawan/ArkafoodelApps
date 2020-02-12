@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet, Image, TextInput} from 'react-native';
-import Icons from 'react-native-vector-icons/FontAwesome'
-
 
 export default class Header extends Component {
   render() {

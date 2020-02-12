@@ -115,6 +115,20 @@ class Carts extends Component {
               </Body>
             </Item>
             </View>
+            <View  style={styles.cardItem}>
+            <Item noBorder>
+              <Left>
+              <Image style={styles.imageDetail} source={require('../../Images/DummyItem.jpg')}/>
+              </Left>
+              <Body>
+              <Text style={styles.foodName}>Ayam Geprek Sambalado Goyang</Text>
+              <Text style={styles.price}>Rp 10.000</Text>
+              <View style={styles.counter}>
+                <Counter start={1} minusIcon={minusIcon} plusIcon={plusIcon} touchableColor='green'/>
+              </View>
+              </Body>
+            </Item>
+            </View>
         </View>
         </View>
         </ScrollView>

@@ -104,11 +104,7 @@ async componentDidMount(){
               </TouchableOpacity>
             </View> 
           </View>
-        {/* </ScrollView> */}
         </View>
-        {/* <ListItem/> */}
-        
-
 
         <View style={styles.body}>
         <ListItem noBorder>
@@ -360,11 +356,8 @@ const styles = StyleSheet.create({
   cardItem:{
     flex:1,
     marginLeft: 15,
-    // marginRight:15,
     marginTop: 10,
     marginBottom: 5,
-    // paddingLeft: 15,
-    // backgroundColor: 'gray',
     borderRadius: 5,
     elevation: 1,
     height: 190,
@@ -387,19 +380,14 @@ const styles = StyleSheet.create({
     // textAlign: 'center',
   },
   imageItem:{
-    // marginLeft: 10,
-    // marginRight: 5,
     marginBottom: 5,
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
     height: 140,
     width: 150,
-    // borderRadius: 100,
-    // textAlignVertical: 'center',
   },
   iIcons:{
     fontSize: 20,
-    // paddingBottom: -10,
     textAlign: 'right',
     marginRight: 5,
     marginTop: 5,
@@ -441,24 +429,16 @@ const styles = StyleSheet.create({
       height: 10,
     },
     divider:{
-      // borderTopColor: 'black'
       marginTop: 20,
-      // height: 20,
     },
     categories:{
       marginLeft: 10,
       marginRight: 10,
-      // justifyContent: "center",
     },
     cardCategories:{
-      // flex:1,
-      // // paddingLeft: 10,
       marginLeft: 10,
       marginBottom: 10,
-      // borderRadius: 5,
-      elevation: 1,
       justifyContent: 'center'
-
     },
     imageCategories:{
       marginTop: 5,
