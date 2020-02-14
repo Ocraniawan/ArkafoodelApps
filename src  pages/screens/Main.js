@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet, Image, ScrollView, ImageBackground, StatusBar} from 'react-native'
 import {Item, ListItem, Separator, Input, Card, Container, Footer, FooterTab,Icon, Button, CardItem, Left, Thumbnail, Body, Right, } from 'native-base'
 import Icons from 'react-native-vector-icons/FontAwesome'
-
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import {connect} from 'react-redux'
 import {getItems, getDetailItem} from '../redux/action/menu'
@@ -13,7 +12,7 @@ import {APP_URL} from '../resources/config'
 import Headers from '../component/header'
 
 
-class Home extends Component {
+class Main extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -24,14 +23,14 @@ class Home extends Component {
 }
 
 async componentDidMount(){
-  // const {id} = this.props.navigation.state.params
+  const {id} = this.props.navigation.state.params
   await this.props.dispatch(getItems())
   // await this.setState({isLoading:this.props.items.isLoading})
   await this.props.dispatch(getRestaurants())
   await this.props.dispatch(getCategories())
-  // await this.props.dispatch(getDetailItem(id))
-  // await this.props.dispatch(getDetailRestaurants(id))
-  await this.props.dispatch(getCategoryById(id))
+//   await this.props.dispatch(getDetailItem(id))
+//   await this.props.dispatch(getDetailRestaurants(id))
+//   await this.props.dispatch(getCategoryById(id))
   this.setState({isLoading:false})
 }
 
@@ -49,14 +48,14 @@ async componentDidMount(){
           </Item>
 
         <ScrollView vertical>
-        {/* <View style={styles.categories} >
+        <View style={styles.categories} >
         <ListItem noBorder>
               <Left>
                 <Text style={{fontWeight:'bold', color: '#494949'}}>Categories</Text>
               </Left>
-        </ListItem> */}
+        </ListItem>
         {/* <ScrollView horizontal>  Categorie*/}
-          {/* <View style={styles.row}>
+          <View style={styles.row}>
             <View style={styles.cardCategories}>
             <TouchableOpacity onPress= { ()=>this.props.navigation.navigate('CategoriesId',{id:7})}>              
               <Image style={styles.imageCategories} source={{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgM7L5s99IRbOPcMC_ySJiTZFyWIVqADSjEtKyUCCa_FA9ZCCS&s'}}/>
@@ -108,7 +107,7 @@ async componentDidMount(){
               </TouchableOpacity>
             </View> 
           </View>
-        </View> */}
+        </View>
 
         <View style={styles.body}>
         <ListItem noBorder>
@@ -123,42 +122,66 @@ async componentDidMount(){
         </ListItem>
           <ScrollView horizontal>
           <View style={styles.row}>
-          {!this.state.isLoading && this.props.items.data.map((v, i) =>{
-          return(
-          //     <View key= {v.id_item} style={styles.cardItem}>
-          //   <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail',{id:v.id_item})}>
-          //     <Image style={styles.imageItem} source={{uri: APP_URL.concat(`src/images/${v.image}`)}}/>
-          //     <Text style={styles.textBody}>{v.item_name}</Text>
-          //     <Item style={styles.itemText} noBorder>
-          //   <Text style={styles.textRating}>
-          //     <Ratings
-          //       fullStarColor = { 'orange' }
-          //       starSize = { 12 }
-          //       disabled = { true }
-          //       maxStars = { 5 }
-          //       rating = { v.rating } 
-          //     />
-          //   </Text>
-          //     <Text style={styles.textPrice}>{v.price}</Text>
-          //     </Item>
-          // </TouchableOpacity>          
-          //   </View>
-          <View style={styles.cardItem}>
-          <Image style={styles.imageItem} source={{uri: APP_URL.concat(`src/images/${v.image}`)}}/>
-          <Text style={styles.textBody}>{v.item_name}</Text>
-          <Item style={styles.itemText} noBorder>
-          {/* <Text style={styles.textRating}><StarRating fullStarColor = {'orange'} starSize = {12} disabled = {true} maxStars = {5} rating = {v.rating}/></Text> */}
-          <Text style={styles.textPrice}>{v.price}</Text>
-          </Item>
-        </View> 
+          {/* {!this.state.isLoading && this.props.items.data.map((v, i) =>{
+           return( */}
 
-        )
-        })}
+              {/* <View key= {v.id_item} style={styles.cardItem}>
+            <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail',{id:v.id_item})}>
+              <Image style={styles.imageItem} source={{uri: APP_URL.concat(`src/images/${v.image}`)}}/>
+              <Text style={styles.textBody}>{v.item_name}</Text>
+              <Item style={styles.itemText} noBorder>
+            <Text style={styles.textRating}>
+              <StarRating
+                fullStarColor = { 'orange' }
+                starSize = { 12 }
+                disabled = { true }
+                maxStars = { 5 }
+                rating = { v.rating } 
+              />
+            </Text>
+              <Text style={styles.textPrice}>{v.price}</Text>
+              </Item>
+          </TouchableOpacity>          
+            </View> */}
+        <View style={styles.cardItem}>
+        <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
+        <Text style={styles.textBody}>Food Name</Text>
+        <Item style={styles.itemText} noBorder>
+        <Text style={styles.textRating}>4.5</Text>
+        <Text style={styles.textPrice}>Rp 10.000</Text>
+        </Item>
+        </View>
+        <View style={styles.cardItem}>
+        <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
+        <Text style={styles.textBody}>Food Name</Text>
+        <Item style={styles.itemText} noBorder>
+        <Text style={styles.textRating}>4.5</Text>
+        <Text style={styles.textPrice}>Rp 10.000</Text>
+        </Item>
+        </View>
+        <View style={styles.cardItem}>
+        <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
+        <Text style={styles.textBody}>Food Name</Text>
+        <Item style={styles.itemText} noBorder>
+        <Text style={styles.textRating}>4.5</Text>
+        <Text style={styles.textPrice}>Rp 10.000</Text>
+        </Item>
+        </View>
+        <View style={styles.cardItem}>
+        <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
+        <Text style={styles.textBody}>Food Name</Text>
+        <Item style={styles.itemText} noBorder>
+        <Text style={styles.textRating}>4.5</Text>
+        <Text style={styles.textPrice}>Rp 10.000</Text>
+        </Item>
+        </View>
+        {/* // )
+        // })} */}
         </View>
           </ScrollView>
         </View>
         {/* //**Restaurant */ }
-        {/* <ListItem noBorder>
+        <ListItem noBorder>
               <Left>
                 <Text style={{fontWeight:'bold', color: '#494949'}}>Our Partners</Text>
               </Left>
@@ -167,13 +190,13 @@ async componentDidMount(){
                 <Text style={{color:'#2578D9', fontWeight:'bold'}}>See All</Text>
                 </TouchableOpacity>
               </Right>
-        </ListItem>  */}
-        {/* <View style={styles.restaurant}>
+        </ListItem> 
+        <View style={styles.restaurant}>
         <ScrollView horizontal>
         <View style={styles.row}>
-        {!this.state.isLoading && this.props.restaurants.data.map((v, i) =>{
-        return(
-        <Card key= {v.id_restaurant} style={styles.cardRestaurant}>
+        {/* {!this.state.isLoading && this.props.restaurants.data.map((v, i) =>{
+        return( */}
+        {/* <Card key= {v.id_restaurant} style={styles.cardRestaurant}>
           <CardItem style={{height:50}}>
               <Left>
                 <Thumbnail style={{height:40, width:40}} source={{uri: 'https://cdn4.vectorstock.com/i/1000x1000/31/73/fast-food-combo-icon-hamburge-pizza-drink-vector-21933173.jpg'}} />
@@ -189,9 +212,9 @@ async componentDidMount(){
           <CardItem style={{height:50}}>
             <Text style={{fontSize:12, color: '#696969'}}>{v.description}</Text>
           </CardItem>
-        </Card>
-        )
-      })}
+        </Card> */}
+        {/* )
+      })} */}
         <Card style={styles.cardRestaurant}>
           <CardItem style={{height:50}}>
               <Left>
@@ -250,11 +273,11 @@ async componentDidMount(){
         </ScrollView>
         </View>
         
- */}
+
 
         {/* <Text>We've got you covered</Text> */}
 
-        {/* <View style={styles.body}>
+        <View style={styles.body}>
         <ListItem noBorder>
               <Left>
                 <Text style={{fontWeight:'bold', color: '#494949',}}>Because You Like Fish</Text>
@@ -262,8 +285,8 @@ async componentDidMount(){
               <Right>
                 <Text style={{color:'#2578D9', fontWeight:'bold'}}>See All</Text>
               </Right>
-        </ListItem> */}
-          {/* <ScrollView horizontal>
+        </ListItem>
+          <ScrollView horizontal>
           <View style={styles.row}>
             <View style={styles.cardItem}>
               <Image style={styles.imageItem} source={require('../../Images/DummyItem.jpg')}/>
@@ -318,8 +341,8 @@ async componentDidMount(){
               </Item>
             </View> 
           </View>
-          </ScrollView> */}
-        {/* </View> */}
+          </ScrollView>
+        </View>
           
           </ScrollView>   
         
@@ -473,5 +496,5 @@ const mapStateToProps = state =>{
   }
 }
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps)(Main)
 

@@ -14,10 +14,11 @@ export const getItems = ()=>{
 
 export const getDetailItem = (id)=>{
     return {
-        type: 'GET_DETAILITEM',
+        type: 'GET_DETAILITEM', 
         payload: Axios.get(url.concat(`/${id}`))
     }
 }
+
 
 export const getButton = (url1)=>{
     return {

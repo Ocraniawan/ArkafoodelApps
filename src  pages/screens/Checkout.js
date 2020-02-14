@@ -18,13 +18,13 @@ export default class Checkout extends Component {
               <Text style={styles.payment}>TOTAL PAYMENT</Text>
             </View>
             <View style={{backgroundColor: 'white', height: 60, alignItems: 'center', justifyContent: 'center'}}>
-              <Text style={styles.total}>Rp 899.900</Text>
+              <Text style={styles.total}>Rp 62.000</Text>
             </View>
             </View>
             </View>
             <Footer >
             <FooterTab  style={{backgroundColor:'#F7F7F7'}}>
-            <Button active onPress = { ()=>this.props.navigation.navigate('#')} style={{backgroundColor:'green', borderRadius: 15, padding: 10, margin: 10, marginBottom: 20,}}>
+            <Button active onPress = { ()=>this.props.navigation.navigate('Meal')} style={{backgroundColor:'green', borderRadius: 15, padding: 10, margin: 10, marginBottom: 20,}}>
               <Text style={{color:'white'}}>PAY SECURE</Text>
             </Button>
           </FooterTab>

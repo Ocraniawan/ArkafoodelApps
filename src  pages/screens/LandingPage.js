@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image, TouchableHighlight} from 'react-native'
+import { Text, View, StyleSheet, Image, TouchableHighlight, StatusBar} from 'react-native'
 import { Container } from 'native-base'
 
 
@@ -55,6 +55,7 @@ export default class App extends Component {
   render() {
     return (
       <>
+      <StatusBar barStyle="light-content" backgroundColor="#075E54" />
       <Container style={styles.root}>
       <View>
           <View style={styles.body}>

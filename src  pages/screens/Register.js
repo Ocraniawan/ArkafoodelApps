@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image, TouchableHighlight} from 'react-native'
+import { Text, View, StyleSheet, Image, TouchableHighlight, TouchableOpacity, StatusBar} from 'react-native'
 import { Container, Input, Form, Item, Label } from 'native-base'
 
 
@@ -85,13 +85,31 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     marginBottom: 50,
     alignSelf: "center",
-  }
+  },
+  textblue: {
+    color: '#14A6DD',
+    fontFamily: 'MuseoSansRounded700',
+    fontSize: 12,
+    paddingLeft: 10,
+  },
+  wrapdaftar: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 35,
+    flexDirection: 'row',
+  },
+  texttiny: {
+    color: '#808B8D',
+    fontFamily: 'MuseoSansRounded500',
+    fontSize: 12,
+  },
 })
 
 export default class App extends Component {
   render() {
     return (
       <>
+    <StatusBar barStyle="light-content" backgroundColor="#075E54" />
       <Container style={styles.root}>
       <View style={styles.header}>
 
@@ -116,6 +134,13 @@ export default class App extends Component {
         <TouchableHighlight style={[styles.buttonContainer, styles.registerButton]} onPress = { ()=>this.props.navigation.navigate('Home')}>
           <Text style={styles.loginText}>Register</Text>
         </TouchableHighlight>
+          </View>
+          <View style={styles.wrapdaftar}>
+            <Text style={styles.texttiny}>Already Sign In?</Text>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('Login')}>
+              <Text style={styles.textblue}>Login</Text>
+            </TouchableOpacity>
           </View>
 
       </Container>

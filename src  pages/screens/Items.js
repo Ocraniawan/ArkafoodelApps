@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image, } from 'react-native'
-import { Container, Header, Left, Body, Right, Button, Icon, Title, CardItem, Item,  Input } from 'native-base'
+import { Container, Header, Left, Body, Right, Button, Title, CardItem, Item, ListItem,  Input } from 'native-base'
 import Headers from '../component/header'
 import Icons from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import {connect} from 'react-redux'
 import {getItems} from '../redux/action/menu'
@@ -46,8 +47,10 @@ const styles = StyleSheet.create({
         height: 150,
       },
       image:{
-        height: 150,
-        width: 150,
+        height: 148,
+        width: 149,
+        marginTop: -14,
+        marginLeft: -16,
         borderTopLeftRadius: 15,
         borderBottomLeftRadius: 15,
       },
@@ -55,14 +58,15 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 16,
         alignSelf: "flex-start",
-        marginTop: -20,
+        marginTop: -30,
         paddingTop: 15,
         paddingRight: 10,
       },
       price:{
-        color: 'orange',
+        color: '#F95A37',
         fontWeight: "bold",
         fontSize: 18,
+        marginTop: 10,
         alignSelf: "flex-start",
       },
       addCart: {
@@ -124,7 +128,7 @@ async componentDidMount() {
                 {!this.state.isLoading && this.props.items.data.map((v, i) =>{
                     return(
                         <View key= {v.id_item} style={styles.cardItem}>
-                        <Item>
+                        <ListItem noBorder>
                             <Left>
                             <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail',{id:v.id_item})}>
                                 <Image style={styles.image} source={{uri: APP_URL.concat(`src/images/${v.image}`)}}/>
@@ -136,7 +140,7 @@ async componentDidMount() {
                                 <View style={styles.counter}>
                                 <Item style={styles.item}>
                                 <TouchableOpacity onPress = { ()=>this.props.navigation.navigate('Detail')} style={styles.addCart}>
-                                    <Icons name='list' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
+                                    <Icon name='eye' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.addCart}>
                                     <Icons name='cart-plus' style={{color:'white', fontWeight:'bold', fontSize:18,}} />
@@ -144,7 +148,7 @@ async componentDidMount() {
                                 </Item>
                                 </View>
                             </Body>
-                        </Item>
+                        </ListItem>
                     </View>                        
                     )
 

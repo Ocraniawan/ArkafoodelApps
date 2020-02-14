@@ -21,7 +21,7 @@ export default class Profile extends Component {
         <LinearGradient colors={['#188168', '#95CE67']} style={styles.home}>
         </LinearGradient>
           </View>
-          <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
+          <Image style={styles.avatar} source={require('../../Images/Profil.png')}/>
           <View style={styles.body}>
             <View style={styles.bodyContent}>
               <Text style={styles.name}>Ocraniawan Patattan</Text>

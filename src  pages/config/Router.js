@@ -7,7 +7,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-
+import Main from '../screens/Main'
 import Mainscreen from '../screens/Home'
 import DetailItem from '../screens/DetailItem'
 import Items from '../screens/Items'
@@ -23,10 +23,11 @@ import Login from '../screens/Login'
 import Register from '../screens/Register' 
 import Restaurants from '../screens/Restaurant'
 import CategoriesById from '../screens/CategoriesById'
+import Meal from '../screens/Meal'
 
 const HomeNav = createStackNavigator({
-    Home:{
-        screen: Mainscreen,
+    Main:{
+        screen: Main,
         navigationOptions: {
             headerShown: false,
         }
@@ -48,7 +49,7 @@ const HomeNav = createStackNavigator({
             headerShown: false,
         }
     }
-}, { initialRouteName: 'Home' })
+}, { initialRouteName: 'Main' })
 
 HomeNav.navigationOptions = ({ navigation }) => {
     let tabBarVisible = true
@@ -104,11 +105,16 @@ const CartNav = createStackNavigator({
     Checkout: {
         screen: Checkout,
         navigationOptions: {
-
         },
     },
     Rating: {
         screen: Rating,
+        navigationOptions: {
+            headerShown: false,  
+        },
+    },
+    Meal: {
+        screen: Meal,
         navigationOptions: {
             headerShown: false,  
         },
