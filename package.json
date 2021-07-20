@@ -17,7 +17,7 @@
     "native-base": "^2.13.8",
     "qs": "^6.9.1",
     "react": "16.9.0",
-    "react-native": "0.61.5",
+    "react-native": "0.62.3",
     "react-native-counters": "^0.0.1",
     "react-native-fetch-blob": "^0.10.8",
     "react-native-gesture-handler": "^1.5.3",
