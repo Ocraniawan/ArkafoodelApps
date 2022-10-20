@@ -24,7 +24,7 @@
     "react-native-image-picker": "^2.3.0",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-loader": "^1.2.1",
-    "react-native-reanimated": "^1.5.0",
+    "react-native-reanimated": "^2.10.0",
     "react-native-review-modal": "^0.0.1",
     "react-native-safe-area-context": "^0.6.2",
     "react-native-screens": "^2.0.0-alpha.24",
